@@ -22,7 +22,7 @@ class User_Model_Serializer(serializers.ModelSerializer):
 
     def validate_age(self, value):
        
-        if value < 0 or value > 120:
+        if value <= 0 or value > 120:  # Allow 0 and 120 as valid values
             raise serializers.ValidationError("Age must be between 0 and 120.")
         return value
-    
+        

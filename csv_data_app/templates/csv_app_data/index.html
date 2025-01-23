@@ -17,20 +17,23 @@
             <form action="/api/upload/" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="file">Upload CSV File</label>
-                <input type="file" name="file" id="file" accept=".csv" required>
+                <input type="file" name="file" id="file" required>
                 <div class="button-container">
-                    <!-- Corrected button -->
                     <button type="submit" class="btn">Upload</button>
                 </div>
             </form>
 
+            <div id="error-message" style="color:red; display:none;">
+                <p>Invalid file type. Only CSV files are allowed.</p>
+            </div>
+
             <div id="response">
-                <!-- Area to display API responses -->
+                <!-- The server's response will appear here -->
             </div>
         </div>
     </div>
 
-     <!-- Link to the external JavaScript file -->
-     <script src="{% static 'js/index.js' %}"></script>
+    <!-- Link to the external JavaScript file -->
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

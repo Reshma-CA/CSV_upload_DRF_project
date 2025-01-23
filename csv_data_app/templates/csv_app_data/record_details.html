@@ -1,12 +1,35 @@
-<div>
-    <h2>Upload Results</h2>
-    <p>Total Records: {{ total_records }}</p>
-    <p>Valid Records: {{ valid_records }}</p>
-    <p>Invalid Records: {{ invalid_records }}</p>
-    <h3>Errors</h3>
-    <ul>
-        {% for error in errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-    </ul>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Details</title>
+</head>
+<body>
+    <div class="results-container">
+        <h1>CSV Upload Results</h1>
+        <p><strong>Total Records Processed:</strong> {{ total_records }}</p>
+        <p><strong>Saved Records:</strong> {{ saved_records }}</p>
+        <p><strong>Rejected Records:</strong> {{ invalid_records }}</p>
+
+        {% if errors %}
+        <h2>Rejected Records Details</h2>
+        <ul>
+            {% for error in errors %}
+            <li>
+                <p><strong>Row:</strong> {{ error.row }}</p>
+                <p><strong>Errors:</strong></p>
+                <ul>
+                    {% for field, messages in error.errors.items %}
+                    <li><strong>{{ field }}:</strong> {{ messages|join:", " }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No errors in the uploaded file.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
