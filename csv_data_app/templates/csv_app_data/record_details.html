@@ -1,35 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Record Details</title>
+    <link rel="stylesheet" href="{% static 'css/record_details.css' %}"> 
 </head>
 <body>
     <div class="results-container">
         <h1>CSV Upload Results</h1>
-        <p><strong>Total Records Processed:</strong> {{ total_records }}</p>
-        <p><strong>Saved Records:</strong> {{ saved_records }}</p>
-        <p><strong>Rejected Records:</strong> {{ invalid_records }}</p>
-
-        {% if errors %}
-        <h2>Rejected Records Details</h2>
-        <ul>
-            {% for error in errors %}
-            <li>
-                <p><strong>Row:</strong> {{ error.row }}</p>
-                <p><strong>Errors:</strong></p>
-                <ul>
-                    {% for field, messages in error.errors.items %}
-                    <li><strong>{{ field }}:</strong> {{ messages|join:", " }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No errors in the uploaded file.</p>
-        {% endif %}
+    
+        <p><strong>Total Records Processed:</strong> <span id="total-records"></span></p>
+        <p><strong>Saved Records:</strong> <span id="saved-records"></span></p>
+        <p><strong>Rejected Records:</strong> <span id="invalid-records"></span></p>
+    
+        <div id="error-details" class="record-details"></div>
+    
+        <a href="/" class="back-button">Back to Upload</a>
     </div>
+
+        <!-- Link to the external JavaScript file -->
+        <script src="{% static 'js/record_details.js' %}"></script>  
 </body>
 </html>
