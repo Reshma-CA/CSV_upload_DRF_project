@@ -9,7 +9,4 @@ urlpatterns = [
     path('details/', DetailsView, name='details'),  # For rendering the record details page
 ]
 
-    #   path('details/', DetailsView.as_view(template_name="csv_app_data/record_details.html"), name='details'),
-
-    # path('api/records/', Record_Details.as_view(), name='record_details'),   
 

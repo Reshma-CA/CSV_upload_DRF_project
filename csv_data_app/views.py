@@ -4,22 +4,11 @@ import csv
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import User
-from .serializers import User_Model_Serializer
-from django.shortcuts import redirect
-from urllib.parse import urlencode
 
-from django.http import HttpResponse
-from django.template.loader import render_to_string
-import json
+from .serializers import User_Model_Serializer
+
 # Create your views here.
 
-
-class IndexView(TemplateView):
-    template_name = "csv_app_data/index.html"
-
-def DetailsView(request):
-    return render(request, 'csv_app_data/record_details.html') 
 
 
 class Upload_CSV_data_View(APIView):
@@ -66,4 +55,8 @@ class Upload_CSV_data_View(APIView):
         except Exception as e:
             return Response({'error': f'File processing error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
-         
+class IndexView(TemplateView):
+    template_name = "csv_app_data/index.html"
+
+def DetailsView(request):
+    return render(request, 'csv_app_data/record_details.html') 

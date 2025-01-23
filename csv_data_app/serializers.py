@@ -14,7 +14,7 @@ class User_Model_Serializer(serializers.ModelSerializer):
 
 
 
-    def validate_email(self, value):
+    def validate_email(self, value): # To check duplicate email 
     
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError("This email is already taken.")

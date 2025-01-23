@@ -1,3 +1,4 @@
+/* General body styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fc;
@@ -6,6 +7,7 @@ body {
     color: #333;
 }
 
+/* Results container styles */
 .results-container {
     width: 80%;
     max-width: 1000px;
@@ -16,27 +18,32 @@ body {
     border-radius: 8px;
 }
 
+/* Title */
 h1 {
     font-size: 2rem;
     color: #4CAF50;
     text-align: center;
 }
 
+/* Subheader for rejected records */
 h2 {
     font-size: 1.5rem;
     color: #FF5722;
     margin-top: 20px;
 }
 
+/* Paragraph styles */
 p {
     font-size: 1rem;
     margin: 10px 0;
 }
 
+/* Strong text (labels) */
 strong {
     color: #333;
 }
 
+/* Section for error details */
 .record-details {
     background-color: #fafafa;
     padding: 20px;
@@ -45,11 +52,13 @@ strong {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
 }
 
+/* Error list styling */
 ul {
     list-style: none;
     padding: 0;
 }
 
+/* List items (records) */
 li {
     margin-bottom: 15px;
     padding: 10px;
@@ -63,17 +72,29 @@ li p {
     font-size: 1rem;
 }
 
+/* Error item styling */
 .error-item {
     background-color: #ffeeee;
-    border-left: 4px solid #f44336;
+    border-left: 4px solid #f44336; /* Red border for errors */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
+/* Error message color */
+.error-item ul li {
+    color: #f44336; /* Red color for error text */
+    font-weight: bold;
+}
+
+/* No errors message */
 .no-errors {
     color: #4CAF50;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
+/* Back to upload button */
 .back-button {
     display: inline-block;
     margin-top: 30px;
