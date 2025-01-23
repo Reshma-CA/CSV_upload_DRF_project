@@ -1,0 +1,12 @@
+<div>
+    <h2>Upload Results</h2>
+    <p>Total Records: {{ total_records }}</p>
+    <p>Valid Records: {{ valid_records }}</p>
+    <p>Invalid Records: {{ invalid_records }}</p>
+    <h3>Errors</h3>
+    <ul>
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
