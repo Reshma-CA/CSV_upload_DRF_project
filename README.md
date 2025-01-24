@@ -87,3 +87,18 @@ pip install pytest pytest-django
 
 
 ```
+
+## API Reference
+
+#### POST API
+
+```http
+  POST /api/upload/
+  
+  http://127.0.0.1:8000/api/upload/
+```
+
+## project screen recording link
+
+https://youtu.be/i4PnIF0HaKg
+
