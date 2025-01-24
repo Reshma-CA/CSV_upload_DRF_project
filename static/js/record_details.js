@@ -1,4 +1,3 @@
-
 // Retrieve data from localStorage
 const data = JSON.parse(localStorage.getItem('uploadResults'));
 
@@ -14,21 +13,22 @@ if (data) {
     if (data.errors && data.errors.length > 0) {
         let errorListHtml = '<h2>Rejected Records Details</h2><ul>';
         data.errors.forEach((error) => {
-            errorListHtml += `<li class="error-item">
-                <p><strong>Row:</strong> ${JSON.stringify(error.row)}</p>
-                <p><strong>Errors:</strong></p>
-                <ul>`;
+            errorListHtml += `
+                <li class="error-item">
+                    <p><strong>Row:</strong> ${JSON.stringify(error.row)}</p>
+                    <p class="error-title"><strong>Errors</strong></p>
+                    <ul>`;
             for (const [field, messages] of Object.entries(error.errors)) {
-                errorListHtml += `<li><strong>${field}:</strong> ${messages.join(", ")}</li>`;
+                errorListHtml += `
+                    <li class="error-message"><strong>${field}:</strong> ${messages.join(", ")}</li>`;
             }
             errorListHtml += `</ul></li>`;
         });
         errorListHtml += '</ul>';
         errorDetailsContainer.innerHTML = errorListHtml;
     } else {
-        errorDetailsContainer.innerHTML = '<p class="no-errors">No errors in the uploaded file.</p>';
+        errorDetailsContainer.innerHTML = '<p class="no-errors">No errors in the uploaded file. All records have been successfully saved! 🎉.</p>';
     }
 } else {
-    // Handle case where no data is available
     alert('No data found in localStorage.');
 }

@@ -4,21 +4,19 @@ import csv
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from .models import User
 from .serializers import User_Model_Serializer
 
 # Create your views here.
 
-
-
 class Upload_CSV_data_View(APIView):
     def post(self, request):
         file = request.FILES.get('file')
-        
+
         # Ensure the file is uploaded and is a CSV
         if not file:
             return Response({'error': 'No file uploaded.'}, status=status.HTTP_400_BAD_REQUEST)
-        
+
         # Check if the file has a CSV extension
         if not file.name.endswith('.csv'):
             return Response({'error': 'Invalid file type. Only CSV files are allowed.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -35,6 +33,14 @@ class Upload_CSV_data_View(APIView):
 
             for row in reader:
                 total_records += 1
+
+                # Check for duplicate email before saving
+                if User.objects.filter(email=row.get('email')).exists():
+                    rejected_records += 1
+                    errors.append({'row': row, 'errors': {'email': ['This email already exists.']}})
+                    continue  # Skip this record
+
+                # Validate and save the record
                 serializer = User_Model_Serializer(data=row)
                 if serializer.is_valid():
                     serializer.save()
@@ -54,7 +60,10 @@ class Upload_CSV_data_View(APIView):
 
         except Exception as e:
             return Response({'error': f'File processing error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
+
+
+
 class IndexView(TemplateView):
     template_name = "csv_app_data/index.html"
 

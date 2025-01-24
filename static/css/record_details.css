@@ -16,6 +16,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
     border-radius: 8px;
+    line-height: 1.5;
 }
 
 /* Title */
@@ -23,6 +24,7 @@ h1 {
     font-size: 2rem;
     color: #4CAF50;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Subheader for rejected records */
@@ -56,6 +58,7 @@ strong {
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 /* List items (records) */
@@ -68,7 +71,7 @@ li {
 }
 
 li p {
-    margin: 0;
+    margin: 0 0 5px 0;
     font-size: 1rem;
 }
 
@@ -81,10 +84,19 @@ li p {
     border-radius: 5px;
 }
 
+/* Error title styling */
+.error-title {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #f44336;
+    font-weight: bold;
+}
+
 /* Error message color */
-.error-item ul li {
+.error-message {
     color: #f44336; /* Red color for error text */
     font-weight: bold;
+    margin-left: 15px;
 }
 
 /* No errors message */
@@ -92,6 +104,7 @@ li p {
     color: #4CAF50;
     font-weight: bold;
     font-size: 1.2rem;
+    text-align: center;
 }
 
 /* Back to upload button */
