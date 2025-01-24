@@ -6,7 +6,7 @@ This project is a Django-based web application for uploading and processing CSV 
 Technologies Used:
 
 Backend: Django, Django Framework.
-Database: SQ lite.
+Database: SQLite.
 Frontend: HTML, CSS, Java Script.
 
 ##  1,Installation
@@ -98,7 +98,7 @@ pip install pytest pytest-django
   http://127.0.0.1:8000/api/upload/
 ```
 
-## project screen recording link
+## Project screen recording link
 
 https://youtu.be/i4PnIF0HaKg
 
